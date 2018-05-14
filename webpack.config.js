@@ -1,19 +1,25 @@
 const webpack=require('webpack');
-
+const path=require('path');
 module.exports={
 	entry:{
 		main:'./src/app.js',
 	},
 	output:{
-		path:'./dest',
+		path:path.resolve(__dirname,'dist'),
 		filename:'[name].[hash:8].js',
 		publicPath:'.',
 	},
+	resolve:{
+		extensions:['.js','.jsx','.css','.less'],
+
+	}
 	module:{
 		rules:[
            {
            	  test:/\.css$/,
+              use:[
 
+              ]
            },
            {
            	  test:/\.(js|jsx)$/,
@@ -31,6 +37,6 @@ module.exports={
 		]
 	},
 	plugin:[
-
+   
 	]
 }
