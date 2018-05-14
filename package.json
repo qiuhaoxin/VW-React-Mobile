@@ -1,0 +1,41 @@
+{
+  "name": "vw-react-mobile",
+  "version": "1.0.0",
+  "description": "use vw with react in mobile wep app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiuhaoxin/VW-React-Mobile.git"
+  },
+  "keywords": [
+    "vw",
+    "vh",
+    "vmax",
+    "vmin",
+    "react"
+  ],
+  "author": "qiuhaoxin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiuhaoxin/VW-React-Mobile/issues"
+  },
+  "homepage": "https://github.com/qiuhaoxin/VW-React-Mobile#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "webpack": "^4.8.3"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react-app": "^3.1.1",
+    "file-loader": "^1.1.11",
+    "postcss-loader": "^2.1.5",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1"
+  }
+}
