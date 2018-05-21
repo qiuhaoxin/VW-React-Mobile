@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
-import {ReactDOM} from 'react-dom';
-import App from './pages.js';
+import React from 'react';
+import ReactDom,{render} from 'react-dom';
+ import App from './page.js';
 
-ReactDOM.render(
-    <App />
-	,document.getElementById('root'))
+ReactDom,render(
+    <App />,
+    document.getElementById('root'))
