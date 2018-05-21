@@ -5,9 +5,9 @@ const HtmlWebpackPlugin=require('html-webpack-plugin');
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin=require('extract-text-webpack-plugin');
 
-const cssFileName="static/css/[name].[contenthash:8].css";
+const cssFilename = 'static/css/[name].[contenthash:8].css';
 
-const ExtractTextOptions=Array(cssFileName.split('/').length).join('../');
+const ExtractTextOptions=Array(cssFilename.split('/').length).join('../');
 //console.log("ExtractTextOptions is "+ExtractTextOptions);
 
 /*
@@ -32,8 +32,7 @@ module.exports={
 	},
 	output:{
 		path:path.resolve(__dirname,'dist'),
-		filename:'[name].[hash:8].js',
-    chunkFilename:'[name].[chunkhash:8].chunk.js',
+		filename:'static/js/[name].[hash:8].js',
 		publicPath:'./',
 	},
 	resolve:{
@@ -45,7 +44,6 @@ module.exports={
            {
            	  test:/\.css$/,
               loader:ExtractTextPlugin.extract(
-                Object.assign(
                 {
                   fallback: {
                     loader: require.resolve('style-loader'),
@@ -63,10 +61,10 @@ module.exports={
                         modules: true,
                         localIdentName: '[name]_[local]_[hash:base64:5]'
                       },
-                    },
+                    }
                   ],
-                },
-                ExtractTextOptions)
+                  publicPath:ExtractTextOptions
+                }
               )
            },
            {
@@ -92,7 +90,7 @@ module.exports={
        	  inject:true,
        }),
        new ExtractTextPlugin({
-         filename:cssFileName,
+         filename:cssFilename,
        })
 
 	]
