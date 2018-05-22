@@ -42,7 +42,7 @@ module.exports={
 	module:{
 		rules:[
            {
-           	  test:/\.css$/,
+           	  test:/\.(css)$/,
               loader:ExtractTextPlugin.extract(
                 {
                   fallback: {
@@ -100,7 +100,7 @@ module.exports={
 
                         ]
                       } 
-                    }
+                    },
                   ],
                   publicPath:ExtractTextOptions
                 }
@@ -113,7 +113,72 @@ module.exports={
            },
            {
            	  test:/\.less$/,
-           	  loader:'less-loader',
+           	  loader:ExtractTextPlugin.extract(
+                {
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                    },
+                  },
+                  use: [
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 1,
+                        minimize: true,
+                        sourceMap: false,
+                        modules: true,
+                        localIdentName: '[name]_[local]_[hash:base64:5]'
+                      },
+                    },
+                    {
+                      loader:require.resolve('postcss-loader'),
+                      options:{
+                        ident:'postcss',
+                        plugins:()=>[
+                           require('postcss-flexbugs-fixes'),
+                           autoprefixer({
+                              browsers:[
+                                 '>1%',
+                                 'last 4 versions',
+                                 'Firefox ESR',
+                                 'not ie<9'
+                              ],
+                              flexbox:'no-2009',
+                           }),
+                           postcssAspectRatioMini({}),
+                           postcssPxToViewport({
+                              viewportWidth: 750, // (Number) The width of the viewport. 
+                              viewportHeight: 1334, // (Number) The height of the viewport. 
+                              unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to. 
+                              viewportUnit: 'vw', // (String) Expected units. 
+                              selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px. 
+                              minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
+                              mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
+                           }),
+                           postcssWriteSvg({
+                            utf8: false
+                           }),
+                           postcssViewportUnits({}),
+
+                            cssnano({
+                              preset: "advanced", 
+                              autoprefixer: false, 
+                              "postcss-zindex": false 
+                            })
+
+                        ]
+                      } 
+                    },
+                    {
+                      loader:require.resolve('less-loader'),
+                      
+                    }
+                  ],
+                  publicPath:ExtractTextOptions
+                }
+              )
            },
            {
            	  test:/\.(jpe?g|pgn|svg|gif)/,

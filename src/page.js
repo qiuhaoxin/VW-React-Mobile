@@ -1,5 +1,5 @@
 import React from 'react';
- import Style from './page.css';
+ import Style from './page.less';
 
 const App=()=>{
    return (
