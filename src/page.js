@@ -3,7 +3,7 @@ import React from 'react';
 
 const App=()=>{
    return (
-	<div>
+	<div className={Style.page}>
         Test VW With React in Mobile App!
 	</div>
    	)
