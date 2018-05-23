@@ -4,7 +4,7 @@ import React from 'react';
 const App=()=>{
    return (
 	<div className={Style.page}>
-        Test VW With React in Mobile App!
+        Test VW With React in Mobile App
 	</div>
    	)
 }
